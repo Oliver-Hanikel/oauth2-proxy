@@ -34,6 +34,8 @@ type Provider struct {
 	ADFSConfig ADFSOptions `json:"ADFSConfig,omitempty"`
 	// BitbucketConfig holds all configurations for Bitbucket provider.
 	BitbucketConfig BitbucketOptions `json:"bitbucketConfig,omitempty"`
+	// GiteaConfig holds all configurations for Gitea provider.
+	GiteaConfig GiteaOptions `json:"giteaConfig,omitempty"`
 	// GitHubConfig holds all configurations for GitHubC provider.
 	GitHubConfig GitHubOptions `json:"githubConfig,omitempty"`
 	// GitLabConfig holds all configurations for GitLab provider.
@@ -81,9 +83,9 @@ type Provider struct {
 }
 
 // ProviderType is used to enumerate the different provider type options
-// Valid options are: adfs, azure, bitbucket, digitalocean facebook, github,
-// gitlab, google, keycloak, keycloak-oidc, linkedin, login.gov, nextcloud
-// and oidc.
+// Valid options are: adfs, azure, bitbucket, digitalocean facebook, gitea,
+// github, gitlab, google, keycloak, keycloak-oidc, linkedin, login.gov,
+// nextcloud and oidc.
 type ProviderType string
 
 const (
@@ -101,6 +103,9 @@ const (
 
 	// FacebookProvider is the provider type for Facebook
 	FacebookProvider ProviderType = "facebook"
+
+	// GiteaProvider is the provider type for Gitea
+	GiteaProvider ProviderType = "gitea"
 
 	// GitHubProvider is the provider type for GitHub
 	GitHubProvider ProviderType = "github"
@@ -155,6 +160,21 @@ type BitbucketOptions struct {
 	Team string `json:"team,omitempty"`
 	// Repository sets restrict logins to user with access to this repository
 	Repository string `json:"repository,omitempty"`
+}
+
+type GiteaOptions struct {
+	// Org sets restrict logins to members of this organisation
+	Org string `json:"org,omitempty"`
+	// Team sets restrict logins to members of this team
+	Team string `json:"team,omitempty"`
+	// Repo sets restrict logins to collaborators of this repository
+	Repo string `json:"repo,omitempty"`
+	// Token is the token to use when verifying repository collaborators
+	// it must have push access to the repository
+	Token string `json:"token,omitempty"`
+	// Users allows users with these usernames to login
+	// even if they do not belong to the specified org and team or collaborators
+	Users []string `json:"users,omitempty"`
 }
 
 type GitHubOptions struct {

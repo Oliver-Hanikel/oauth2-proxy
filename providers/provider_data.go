@@ -33,6 +33,7 @@ type ProviderData struct {
 	ProfileURL        *url.URL
 	ProtectedResource *url.URL
 	ValidateURL       *url.URL
+	ApiURL            *url.URL
 	ClientID          string
 	ClientSecret      string
 	ClientSecretFile  string
@@ -184,6 +185,7 @@ type providerDefaults struct {
 	redeemURL   *url.URL
 	profileURL  *url.URL
 	validateURL *url.URL
+	apiURL      *url.URL
 	scope       string
 }
 
@@ -193,6 +195,7 @@ func (p *ProviderData) setProviderDefaults(defaults providerDefaults) {
 	p.RedeemURL = defaultURL(p.RedeemURL, defaults.redeemURL)
 	p.ProfileURL = defaultURL(p.ProfileURL, defaults.profileURL)
 	p.ValidateURL = defaultURL(p.ValidateURL, defaults.validateURL)
+	p.ApiURL = defaultURL(p.ApiURL, defaults.apiURL)
 
 	if p.Scope == "" {
 		p.Scope = defaults.scope

@@ -514,6 +514,7 @@ type LegacyProvider struct {
 	ProfileURL                         string   `flag:"profile-url" cfg:"profile_url"`
 	ProtectedResource                  string   `flag:"resource" cfg:"resource"`
 	ValidateURL                        string   `flag:"validate-url" cfg:"validate_url"`
+	ApiURL                             string   `flag:"api-url" cfg:"api_url"`
 	Scope                              string   `flag:"scope" cfg:"scope"`
 	Prompt                             string   `flag:"prompt" cfg:"prompt"`
 	ApprovalPrompt                     string   `flag:"approval-prompt" cfg:"approval_prompt"` // Deprecated by OIDC 1.0
@@ -568,6 +569,7 @@ func legacyProviderFlagSet() *pflag.FlagSet {
 	flagSet.String("profile-url", "", "Profile access endpoint")
 	flagSet.String("resource", "", "The resource that is protected (Azure AD only)")
 	flagSet.String("validate-url", "", "Access token validation endpoint")
+	flagSet.String("api-url", "", "Api URL endpoint")
 	flagSet.String("scope", "", "OAuth scope specification")
 	flagSet.String("prompt", "", "OIDC prompt")
 	flagSet.String("approval-prompt", "force", "OAuth approval_prompt")
