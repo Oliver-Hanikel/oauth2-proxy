@@ -86,6 +86,7 @@ func (r *builder) Do() Result {
 	if r.context == nil {
 		r.context = context.Background()
 	}
+	fmt.Printf("Request to %s\n", r.endpoint)
 
 	return r.do()
 }
